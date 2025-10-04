@@ -29,6 +29,9 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
 
+# Target device
+TARGET_DEVICE_ALT="citrus, lime, lemon, pomelo, juice, chime"
+
 # Binder
 TARGET_USES_64_BIT_BINDER := true
 

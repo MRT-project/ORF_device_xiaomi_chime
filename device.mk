@@ -21,6 +21,9 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_SHIPPING_API_LEVEL := 31
 PRODUCT_TARGET_VNDK_VERSION := 31
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := citrus,lime,lemon,pomelo,juice,chime
+
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
