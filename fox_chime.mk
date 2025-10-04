@@ -24,7 +24,7 @@
 OF_MAINTAINER := AnGgIt86 M•R•T
 
 # Version of orangefox recovery
-FOX_VERSION := R11.1
+FOX_MAINTAINER_PATCH_VERSION := 1
 
 # screen
 OF_SCREEN_H := 2340
@@ -52,6 +52,9 @@ OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
 
 # quick backup defaults
 OF_QUICK_BACKUP_LIST := /boot;/data;/system_image;/vendor_image;/product_image;/system_ext_image;
+
+# all partition tools - filter, and support TW_ENABLE_ALL_PARTITION_T
+OF_ENABLE_ALL_PARTITION_TOOLS := 1
 
 # necessary to decrypt most chime ROMs (trigger "TW_PREPARE_DATA_MEDIA_EARLY")
 OF_FIX_DECRYPTION_ON_DATA_MEDIA := 1
