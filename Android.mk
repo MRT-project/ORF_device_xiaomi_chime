@@ -8,5 +8,5 @@
 LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_DEVICE),chime)
-include $(call all-subdir-makefiles,$(LOCAL_PATH))
+    include $(call all-subdir-makefiles,$(LOCAL_PATH))
 endif
