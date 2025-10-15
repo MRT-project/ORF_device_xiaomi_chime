@@ -1,33 +1,56 @@
 #
-# Copyright (C) 2025 The Android Open Source Project
-# Copyright (C) 2025 SebaUbuntu's TWRP device tree generator
+# Copyright 2018 The Android Open Source Project
 #
-# Copyright (C) 2023-2024 The OrangeFox Recovery Project
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# SPDX-License-Identifier: Apache-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+# Display settings
+TARGET_SCREEN_HEIGHT := 2400
+TARGET_SCREEN_WIDTH := 1080
 
-LOCAL_PATH := device/xiaomi/chime
-
-# Soong Namespaces
+# Namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    vendor/qcom/opensource/commonsys-intf/display \
-    $(LOCAL_PATH)
+    vendor/qcom/opensource/commonsys-intf/display
 
-# API & VNDK
-PRODUCT_SHIPPING_API_LEVEL := 31
-PRODUCT_TARGET_VNDK_VERSION := 31
+# Packages
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
 
-# Assert
+# API level
+PRODUCT_SHIPPING_API_LEVEL := 29
+
+# Device assertions
 TARGET_OTA_ASSERT_DEVICE := citrus,lime,lemon,pomelo,juice,chime
 
-# Dynamic Partitions
+# Vendor partition
+TARGET_COPY_OUT_VENDOR := vendor
+
+# Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Additional binaries & libraries needed for recovery
+# Crypto settings
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+PLATFORM_SECURITY_PATCH := 2099-12-31
+VENDOR_SECURITY_PATCH := 2099-12-31
+PLATFORM_VERSION := 16.1.0
+PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+
+# Recovery settings
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
     vendor.display.config@1.0 \
@@ -37,13 +60,39 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     vendor.qti.hardware.vibrator.impl \
     libqtivibratoreffect
 
-#Properties
+# TWRP specific flags
+TW_THEME := portrait_hdpi
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_EXTRA_LANGUAGES := true
+TW_INCLUDE_NTFS_3G := true
+TW_USE_TOOLBOX := true
+TW_INCLUDE_RESETPROP := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
+TW_DEFAULT_BRIGHTNESS := 1200
+TW_MAX_BRIGHTNESS := 1200
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
+TARGET_USES_MKE2FS := true
+TW_NO_SCREEN_BLANK := true
+TW_EXCLUDE_APEX := true
+TW_FRAMERATE := 60
+TW_INCLUDE_FASTBOOTD := true
+
+# System properties override
 TW_OVERRIDE_SYSTEM_PROPS := \
     "ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental"
 
+# Vibrator support
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+
+# Recovery binary sources
 RECOVERY_BINARY_SOURCE_FILES += \
     $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.qti.hardware.vibrator.service
 
+# Recovery library sources
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \

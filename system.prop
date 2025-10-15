@@ -1,13 +1,22 @@
+# Product Information
 ro.product.vendor.marketname=SM6115
 ro.product.board=chime
 ro.board.platform=bengal
+
+# USB Configuration
 sys.usb.controller=4e00000.dwc3
 sys.usb.rndis.func.name=rndis_bam
 sys.usb.rmnet.func.name=rmnet_bam
 persist.sys.isUsbOtgEnabled=true
+
+# Security & ADB
 vendor.gatekeeper.disable_spu=true
-ro.boot.dynamic_partitions=true
 ro.adb.secure=0
+
+# Partition Management
+ro.boot.dynamic_partitions=true
+
+# Encryption Settings
 fbe.metadata.wrappedkey=true
 ro.crypto.dm_default_key.options_format.version=2
 ro.crypto.volume.filenames_mode=aes-256-cts

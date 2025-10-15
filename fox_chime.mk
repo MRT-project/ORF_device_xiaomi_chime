@@ -1,117 +1,75 @@
 #
-#	This file is part of the OrangeFox Recovery Project
-# 	Copyright (C) 2023-2024 The OrangeFox Recovery Project
+# Copyright 2018 The Android Open Source Project
 #
-#	OrangeFox is free software: you can redistribute it and/or modify
-#	it under the terms of the GNU General Public License as published by
-#	the Free Software Foundation, either version 3 of the License, or
-#	any later version.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-#	OrangeFox is distributed in the hope that it will be useful,
-#	but WITHOUT ANY WARRANTY; without even the implied warranty of
-#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#	GNU General Public License for more details.
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
-# 	This software is released under GPL version 3 or any later version.
-#	See <http://www.gnu.org/licenses/>.
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
-# 	Please maintain this if you use this script or any part of it
-#
-
-# OrangeFox-specific settings #
 
 # maintainer
 OF_MAINTAINER := AnGgIt86 M•R•T
 
-# Version of orangefox recovery
+# Version of orangefox recovery automatic
 FOX_MAINTAINER_PATCH_VERSION := 1
 
-# screen
-OF_SCREEN_H := 2340
-OF_STATUS_H := 125
-OF_STATUS_INDENT_LEFT := 85
-OF_STATUS_INDENT_RIGHT := 85
+# Partition settings
+FOX_RECOVERY_SYSTEM_PARTITION := /dev/block/dm-1
+FOX_RECOVERY_SYSTEMEXT_PARTITION := /dev/block/dm-2
+FOX_RECOVERY_PRODUCT_PARTITION := /dev/block/dm-3
+FOX_RECOVERY_VENDOR_PARTITION := /dev/block/dm-0
+
+# OrangeFox features
+OF_USE_GREEN_LED := 0
 OF_HIDE_NOTCH := 1
-OF_CLOCK_POS := 1
-OF_ALLOW_DISABLE_NAVBAR := 0
-
-# Dynamic partition
-FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-FOX_RECOVERY_SYSTEMEXT_PARTITION="/dev/block/mapper/system_ext"
-FOX_RECOVERY_PRODUCT_PARTITION="/dev/block/mapper/product"
-FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-
-# other stuff
+OF_USE_MAGISKBOOT := 1
+OF_USE_MAGISKBOOT_FOR_ALL_PATCHES := 1
 OF_DONT_PATCH_ENCRYPTED_DEVICE := 1
+FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER := 1
 OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
+OF_NO_MIUI_PATCH_WARNING := 1
+OF_PATCH_AVB20 := 1
 OF_IGNORE_LOGICAL_MOUNT_ERRORS := 1
 OF_FBE_METADATA_MOUNT_IGNORE := 1
-OF_USE_GREEN_LED := 0
-FOX_DELETE_AROMAFM := 1
+FOX_ENABLE_APP_MANAGER := 1
 
-# OTA
+# Shell and utilities
+FOX_USE_BASH_SHELL := 1
+FOX_ASH_IS_BASH := 1
+FOX_USE_TAR_BINARY := 1
+FOX_USE_SED_BINARY := 1
+FOX_USE_XZ_UTILS := 1
+FOX_USE_NANO_EDITOR := 1
+
+# Backup and OTA
+OF_QUICK_BACKUP_LIST := /boot;/dtbo;/data;/system_image;/vendor_image;/product_image;
 OF_KEEP_DM_VERITY := 1
 OF_SUPPORT_ALL_BLOCK_OTA_UPDATES := 1
 OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR := 1
-
-# MIUU
-OF_NO_MIUI_PATCH_WARNING := 1
 OF_DISABLE_MIUI_OTA_BY_DEFAULT := 1
-
-# AOSP
+FOX_DELETE_AROMAFM := 1
 FOX_BUGGED_AOSP_ARB_WORKAROUND := 1546300800
 
-# TWRP recovery
-FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER := 1
-
-# patch avb20 - some ROM recoveries try to overwrite custom recoveries
-OF_PATCH_AVB20 := 1
-
-# support disabling avb2.0 by patching vbmeta/vbmeta_system
-OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
-
-# quick backup defaults
-OF_QUICK_BACKUP_LIST := /boot;/data;/system_image;/vendor_image;/product_image;/system_ext_image;
-
-# all partition tools - filter, and support TW_ENABLE_ALL_PARTITION_T
-OF_ENABLE_ALL_PARTITION_TOOLS := 1
-
-# necessary to decrypt most chime ROMs (trigger "TW_PREPARE_DATA_MEDIA_EARLY")
-OF_FIX_DECRYPTION_ON_DATA_MEDIA := 1
-
-# ensure that /sdcard is bind-unmounted before f2fs data repair or format
+# try to prevent potential data format errors
 OF_UNBIND_SDCARD_F2FS := 1
 
-# legacy services for battery
-OF_USE_LEGACY_BATTERY_SERVICES := 1
+# maximum permissible splash image size (in kilobytes); do *NOT* increase!
+OF_SPLASH_MAX_SIZE := 130
 
-# number of list options before scrollbar creation
-OF_OPTIONS_LIST_NUM := 9
+# screen settings
+OF_SCREEN_H := 2400
+OF_STATUS_H := 100
+OF_STATUS_INDENT_LEFT := 48
+OF_STATUS_INDENT_RIGHT := 48
+OF_HIDE_NOTCH := 1
+OF_CLOCK_POS := 1
 
-# whether to wipe /metadata after formatting data
-OF_WIPE_METADATA_AFTER_DATAFORMAT := 1
-
-# if using the prebuilt LZ4 binary, ensure that liblz4.so is included
-FOX_USE_LZ4_BINARY := 1
-
-# Nano
-FOX_USE_NANO_EDITOR := 1
-
-# Keymaster
-OF_DEFAULT_KEYMASTER_VERSION := 4.1
-
-# some mtk devices will need this, consequent upon recent build system commits
-OF_FORCE_USE_RECOVERY_FSTAB := 1
-
-# Binaries
-FOX_USE_BASH_SHELL := 1
-FOX_ASH_IS_BASH := 1
-FOX_USE_GREP_BINARY := 1
-FOX_USE_TAR_BINARY := 1
-FOX_USE_ZIP_BINARY := 1
-FOX_USE_SED_BINARY := 1
-FOX_REPLACE_TOOLBOX_GETPROP := 1
-FOX_USE_XZ_UTILS := 1
-FOX_REPLACE_BUSYBOX_PS := 1
-OF_ENABLE_LPTOOLS := 1
-FOX_ENABLE_APP_MANAGER := 1
+# f2fs compression
+OF_ENABLE_FS_COMPRESSION := 1
