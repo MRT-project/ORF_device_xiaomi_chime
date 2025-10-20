@@ -60,9 +60,6 @@ FOX_BUGGED_AOSP_ARB_WORKAROUND := 1546300800
 # try to prevent potential data format errors
 OF_UNBIND_SDCARD_F2FS := 1
 
-# maximum permissible splash image size (in kilobytes); do *NOT* increase!
-OF_SPLASH_MAX_SIZE := 130
-
 # screen settings
 OF_SCREEN_H := 2400
 OF_STATUS_H := 100
