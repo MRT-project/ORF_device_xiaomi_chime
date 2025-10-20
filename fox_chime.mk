@@ -70,3 +70,6 @@ OF_CLOCK_POS := 1
 
 # f2fs compression
 OF_ENABLE_FS_COMPRESSION := 1
+
+# avoid decryption problems on some devices and ROMs
+OF_FIX_DECRYPTION_ON_DATA_MEDIA := 1
