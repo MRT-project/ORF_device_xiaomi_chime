@@ -35,7 +35,6 @@ OF_DONT_PATCH_ENCRYPTED_DEVICE := 1
 FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER := 1
 OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
 OF_NO_MIUI_PATCH_WARNING := 1
-OF_PATCH_AVB20 := 1
 OF_IGNORE_LOGICAL_MOUNT_ERRORS := 1
 OF_FBE_METADATA_MOUNT_IGNORE := 1
 FOX_ENABLE_APP_MANAGER := 1
@@ -73,3 +72,9 @@ OF_ENABLE_FS_COMPRESSION := 1
 
 # avoid decryption problems on some devices and ROMs
 OF_FIX_DECRYPTION_ON_DATA_MEDIA := 1
+
+# patch avb20 - some ROM recoveries try to overwrite custom recoveries
+OF_PATCH_AVB20 := 1
+
+# support disabling avb2.0 by patching vbmeta/vbmeta_system
+OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
