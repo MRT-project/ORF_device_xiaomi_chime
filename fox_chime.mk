@@ -78,3 +78,6 @@ OF_PATCH_AVB20 := 1
 
 # support disabling avb2.0 by patching vbmeta/vbmeta_system
 OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
+
+# disable automatic rebooting after openrecoveryscript finishes
+OF_DISABLE_ORS_AUTO_REBOOT := 1
