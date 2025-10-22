@@ -81,3 +81,8 @@ OF_SUPPORT_VBMETA_AVB2_PATCHING := 1
 
 # disable automatic rebooting after openrecoveryscript finishes
 OF_DISABLE_ORS_AUTO_REBOOT := 1
+
+# ksu and variants
+FOX_ENABLE_KERNELSU_SUPPORT := 1
+FOX_ENABLE_KERNELSU_NEXT_SUPPORT := 1
+FOX_ENABLE_SUKISU_SUPPORT := 1
