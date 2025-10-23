@@ -14,8 +14,11 @@
 # limitations under the License.
 #
 
+LOCAL_PATH := device/xiaomi/chime
+
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH) \
     vendor/qcom/opensource/commonsys-intf/display
 
 # Packages
