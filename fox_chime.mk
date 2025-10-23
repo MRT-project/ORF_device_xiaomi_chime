@@ -21,10 +21,10 @@ OF_MAINTAINER := AnGgIt86 M•R•T
 FOX_MAINTAINER_PATCH_VERSION := 1
 
 # Partition settings
-FOX_RECOVERY_SYSTEM_PARTITION := /dev/block/dm-1
-FOX_RECOVERY_SYSTEMEXT_PARTITION := /dev/block/dm-2
-FOX_RECOVERY_PRODUCT_PARTITION := /dev/block/dm-3
-FOX_RECOVERY_VENDOR_PARTITION := /dev/block/dm-0
+FOX_RECOVERY_SYSTEM_PARTITION := /dev/block/mapper/system
+FOX_RECOVERY_SYSTEMEXT_PARTITION := /dev/block/mapper/system_ext
+FOX_RECOVERY_PRODUCT_PARTITION := /dev/block/mapper/product
+FOX_RECOVERY_VENDOR_PARTITION := /dev/block/mapper/vendor
 
 # OrangeFox features
 OF_USE_GREEN_LED := 0

@@ -5,58 +5,60 @@
 # mount_point        fstype   device                          device2              flags
 
 # Logical Partitions (Dynamic Partitions)
-/system_root         ext4     /dev/block/dm-1                                   flags=display="System";backup=0;wipeingui
-/system_image        emmc     /dev/block/dm-1                                   flags=backup=1;display="System Image";flashimg=1
-/system_ext          ext4     /dev/block/dm-2                                   flags=display="System Ext";backup=0;wipeingui
-/system_ext_image    emmc     /dev/block/dm-2                                   flags=backup=1;display="System Ext";flashimg=1
-/vendor              ext4     /dev/block/dm-0                                   flags=display="Vendor";backup=0;wipeingui
-/vendor_image        emmc     /dev/block/dm-0                                   flags=backup=1;display="Vendor";flashimg=1
-/product             ext4     /dev/block/dm-3                                   flags=display="Product";backup=0;wipeingui
-/product_image       emmc     /dev/block/dm-3                                   flags=backup=1;display="Product";flashimg=1
+/system_root         ext4     /dev/block/mapper/system                           flags=display="system";backup=0;wipeingui
+/system_image        emmc     /dev/block/mapper/system                           flags=backup=1;display="system image";flashimg=1
+/system_ext          ext4     /dev/block/mapper/system_ext                       flags=display="system_ext";backup=0;wipeingui
+/system_ext_image    emmc     /dev/block/mapper/system_ext                       flags=backup=1;display="system_ext";flashimg=1
+/vendor              ext4     /dev/block/mapper/vendor                           flags=display="vendor";backup=0;wipeingui
+/vendor_image        emmc     /dev/block/mapper/vendor                           flags=backup=1;display="vendor image";flashimg=1
+/product             ext4     /dev/block/mapper/product                          flags=display="product";backup=0;wipeingui
+/product_image       emmc     /dev/block/mapper/product                          flags=backup=1;display="product image";flashimg=1
+/odm                 ext4     /dev/block/mapper/odm                              flags=display="odm";backup=0;wipeingui
+/odm_image           emmc     /dev/block/mapper/odm                              flags=backup=1;display="odm image";flashimg=1
 
 # Essential Partitions
-/metadata            ext4     /dev/block/by-name/metadata                       flags=backup=0;wrappedkey;display="Metadata"
-/data                f2fs     /dev/block/by-name/userdata                       flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption
+/metadata            ext4     /dev/block/by-name/metadata                        flags=backup=0;wrappedkey;display="Metadata"
+/data                f2fs     /dev/block/by-name/userdata                        flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption
 /boot                emmc     /dev/block/by-name/boot
-/dtbo                emmc     /dev/block/by-name/dtbo                           flags=backup=1;display="DTBO";flashimg=1
+/dtbo                emmc     /dev/block/by-name/dtbo                            flags=backup=1;display="DTBO";flashimg=1
 /cache               ext4     /dev/block/by-name/cache
-/recovery            emmc     /dev/block/by-name/recovery                       flags=backup=1
+/recovery            emmc     /dev/block/by-name/recovery                        flags=backup=1
 
 # Firmware Partitions
-/firmware            vfat     /dev/block/by-name/modem                          flags=display="Firmware"
-/cust                ext4     /dev/block/by-name/cust                           flags=display="Cust"
+/firmware            vfat     /dev/block/by-name/modem                           flags=display="Firmware"
+/cust                ext4     /dev/block/by-name/cust                            flags=display="Cust"
 /misc                emmc     /dev/block/by-name/misc
-/vbmeta              emmc     /dev/block/by-name/vbmeta                         flags=display="VBMeta";backup=1;flashimg
-/vbmeta_system       emmc     /dev/block/by-name/vbmeta_system                  flags=display="VBMeta System";backup=1;flashimg
-/modem               emmc     /dev/block/by-name/modem                          flags=backup=1;display="Modem"
-/bluetooth           emmc     /dev/block/by-name/bluetooth                      flags=backup=1;subpartitionof=/modem
-/dsp                 emmc     /dev/block/by-name/dsp                            flags=backup=1;subpartitionof=/modem
+/vbmeta              emmc     /dev/block/by-name/vbmeta                          flags=display="VBMeta";backup=1;flashimg
+/vbmeta_system       emmc     /dev/block/by-name/vbmeta_system                   flags=display="VBMeta System";backup=1;flashimg
+/modem               emmc     /dev/block/by-name/modem                           flags=backup=1;display="Modem"
+/bluetooth           emmc     /dev/block/by-name/bluetooth                       flags=backup=1;subpartitionof=/modem
+/dsp                 emmc     /dev/block/by-name/dsp                             flags=backup=1;subpartitionof=/modem
 
 # Bootloader and Security Partitions
-/abl                 emmc     /dev/block/by-name/abl                            flags=display="Bootloader";backup=1
-/cmnlib              emmc     /dev/block/by-name/cmnlib                         flags=backup=1;subpartitionof=/abl
-/cmnlib64            emmc     /dev/block/by-name/cmnlib64                       flags=backup=1;subpartitionof=/abl
-/devcfg              emmc     /dev/block/by-name/devcfg                         flags=backup=1;subpartitionof=/abl
-/featenabler         emmc     /dev/block/by-name/featenabler                    flags=backup=1;subpartitionof=/abl
-/hyp                 emmc     /dev/block/by-name/hyp                            flags=backup=1;subpartitionof=/abl
-/imagefv             emmc     /dev/block/by-name/imagefv                        flags=backup=1;subpartitionof=/abl
-/keymaster           emmc     /dev/block/by-name/keymaster                      flags=backup=1;subpartitionof=/abl
-/logfs               emmc     /dev/block/by-name/logfs                          flags=backup=1;subpartitionof=/abl
-/qupfw               emmc     /dev/block/by-name/qupfw                          flags=backup=1;subpartitionof=/abl
-/rpm                 emmc     /dev/block/by-name/rpm                            flags=backup=1;subpartitionof=/abl
-/storsec             emmc     /dev/block/by-name/storsec                        flags=backup=1;subpartitionof=/abl
-/tz                  emmc     /dev/block/by-name/tz                             flags=backup=1;subpartitionof=/abl
-/uefisecapp          emmc     /dev/block/by-name/uefisecapp                     flags=backup=1;subpartitionof=/abl
-/xbl                 emmc     /dev/block/by-name/xbl                            flags=backup=1;subpartitionof=/abl
-/xbl_config          emmc     /dev/block/by-name/xbl_config                     flags=backup=1;subpartitionof=/abl
+/abl                 emmc     /dev/block/by-name/abl                             flags=display="Bootloader";backup=1
+/cmnlib              emmc     /dev/block/by-name/cmnlib                          flags=backup=1;subpartitionof=/abl
+/cmnlib64            emmc     /dev/block/by-name/cmnlib64                        flags=backup=1;subpartitionof=/abl
+/devcfg              emmc     /dev/block/by-name/devcfg                          flags=backup=1;subpartitionof=/abl
+/featenabler         emmc     /dev/block/by-name/featenabler                     flags=backup=1;subpartitionof=/abl
+/hyp                 emmc     /dev/block/by-name/hyp                             flags=backup=1;subpartitionof=/abl
+/imagefv             emmc     /dev/block/by-name/imagefv                         flags=backup=1;subpartitionof=/abl
+/keymaster           emmc     /dev/block/by-name/keymaster                       flags=backup=1;subpartitionof=/abl
+/logfs               emmc     /dev/block/by-name/logfs                           flags=backup=1;subpartitionof=/abl
+/qupfw               emmc     /dev/block/by-name/qupfw                           flags=backup=1;subpartitionof=/abl
+/rpm                 emmc     /dev/block/by-name/rpm                             flags=backup=1;subpartitionof=/abl
+/storsec             emmc     /dev/block/by-name/storsec                         flags=backup=1;subpartitionof=/abl
+/tz                  emmc     /dev/block/by-name/tz                              flags=backup=1;subpartitionof=/abl
+/uefisecapp          emmc     /dev/block/by-name/uefisecapp                      flags=backup=1;subpartitionof=/abl
+/xbl                 emmc     /dev/block/by-name/xbl                             flags=backup=1;subpartitionof=/abl
+/xbl_config          emmc     /dev/block/by-name/xbl_config                      flags=backup=1;subpartitionof=/abl
 
 # EFS and Persistence Partitions
-/efs1                emmc     /dev/block/by-name/modemst1                       flags=backup=1;display="EFS"
-/efs2                emmc     /dev/block/by-name/modemst2                       flags=backup=1;subpartitionof=/efs1
-/efsc                emmc     /dev/block/by-name/fsc                            flags=backup=1;subpartitionof=/efs1
-/efsg                emmc     /dev/block/by-name/fsg                            flags=backup=1;subpartitionof=/efs1
-/persist             ext4     /dev/block/by-name/persist                        flags=backup=1;display="Persist"
-/persist_image       emmc     /dev/block/by-name/persist                        flags=display="Persist";flashimg=1
+/efs1                emmc     /dev/block/by-name/modemst1                        flags=backup=1;display="EFS"
+/efs2                emmc     /dev/block/by-name/modemst2                        flags=backup=1;subpartitionof=/efs1
+/efsc                emmc     /dev/block/by-name/fsc                             flags=backup=1;subpartitionof=/efs1
+/efsg                emmc     /dev/block/by-name/fsg                             flags=backup=1;subpartitionof=/efs1
+/persist             ext4     /dev/block/by-name/persist                         flags=backup=1;display="Persist"
+/persist_image       emmc     /dev/block/by-name/persist                         flags=display="Persist";flashimg=1
 
 # Removable Storage
 /usb_otg             vfat     /dev/block/sdg1              /dev/block/sdg        flags=fsflags=utf8;display="USB Storage";storage;wipeingui;removable
