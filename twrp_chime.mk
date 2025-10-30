@@ -21,14 +21,14 @@ DEVICE_PATH := device/xiaomi/chime
 # Inherit base Android configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
+# Inherit any OrangeFox-specific settings
+$(call inherit-product-if-exists, $(DEVICE_PATH)/fox_chime.mk)
+
 # Inherit TWRP common configuration
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit device specific configuration
 $(call inherit-product, device/xiaomi/chime/device.mk)
-
-# Inherit any OrangeFox-specific settings
-$(call inherit-product-if-exists, $(DEVICE_PATH)/fox_chime.mk)
 
 ## Device identifier
 PRODUCT_DEVICE := chime
