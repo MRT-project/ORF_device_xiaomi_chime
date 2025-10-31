@@ -39,8 +39,67 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     # Language and locale
     export TW_DEFAULT_LANGUAGE="en"
     export LC_ALL="C"
-    export TARGET_DEVICE_ALT="citrus,lime,lemon,pomelo,juice,chime"
+    export TARGET_DEVICE_ALT="citrus, lime, lemon, pomelo, juice, chime"
     export ALLOW_MISSING_DEPENDENCIES=true
+    # maintainer
+    export OF_MAINTAINER="AnGgIt86 M•R•T"
+    # Version of orangefox recovery automatic
+    export FOX_MAINTAINER_PATCH_VERSION=2
+    # Partition settings
+    export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+    export FOX_RECOVERY_SYSTEMEXT_PARTITION="/dev/block/mapper/system_ext"
+    export FOX_RECOVERY_PRODUCT_PARTITION="/dev/block/mapper/product"
+    export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+    # OrangeFox features
+    export OF_USE_GREEN_LED=0
+    export OF_HIDE_NOTCH=1
+    export OF_USE_MAGISKBOOT=1
+    export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
+    export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
+    export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+    export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
+    export OF_NO_MIUI_PATCH_WARNING=1
+    export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
+    export OF_FBE_METADATA_MOUNT_IGNORE=1
+    export FOX_ENABLE_APP_MANAGER=1
+    # Shell and utilities
+    export FOX_USE_BASH_SHELL=1
+    export FOX_ASH_IS_BASH=1
+    export FOX_USE_TAR_BINARY=1
+    export FOX_USE_SED_BINARY=1
+    export FOX_USE_XZ_UTILS=1
+    export FOX_USE_NANO_EDITOR=1
+    # Backup and OTA
+    export OF_QUICK_BACKUP_LIST="/boot;/dtbo;/data;/system_image;/vendor_image;/product_image;"
+    export OF_KEEP_DM_VERITY=1
+    export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
+    export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
+    export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
+    export FOX_DELETE_AROMAFM=1
+    export FOX_BUGGED_AOSP_ARB_WORKAROUND=1546300800
+    # try to prevent potential data format errors
+    export OF_UNBIND_SDCARD_F2FS=1
+    # screen settings
+    export OF_SCREEN_H=2340
+    export OF_STATUS_H=80
+    export OF_STATUS_INDENT_LEFT=55
+    export OF_STATUS_INDENT_RIGHT=55
+    export OF_HIDE_NOTCH=1
+    export OF_CLOCK_POS=1
+    # f2fs compression
+    export OF_ENABLE_FS_COMPRESSION=1
+    # avoid decryption problems on some devices and ROMs
+    export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
+    # patch avb20 - some ROM recoveries try to overwrite custom recoveries
+    export OF_PATCH_AVB20=1
+    # support disabling avb2.0 by patching vbmeta/vbmeta_system
+    export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
+    # disable automatic rebooting after openrecoveryscript finishes
+    export OF_DISABLE_ORS_AUTO_REBOOT=1
+    # ksu and variants
+    export FOX_ENABLE_KERNELSU_SUPPORT=1
+    export FOX_ENABLE_KERNELSU_NEXT_SUPPORT=1
+    export FOX_ENABLE_SUKISU_SUPPORT=1
     
     # Log build variables
     if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then

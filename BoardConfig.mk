@@ -138,6 +138,3 @@ BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
 # Python support for ABX conversion
 TW_INCLUDE_PYTHON := true
-
-# Theme
-TW_THEME := portrait_hdpi
