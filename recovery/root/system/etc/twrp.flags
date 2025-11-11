@@ -13,8 +13,6 @@
 /vendor_image        emmc     /dev/block/mapper/vendor                           flags=backup=1;display="Vendor Image";flashimg=1
 /product             ext4     /dev/block/mapper/product                          flags=display="Product";backup=0;wipeingui=1
 /product_image       emmc     /dev/block/mapper/product                          flags=backup=1;display="Product Image";flashimg=1
-/odm                 ext4     /dev/block/mapper/odm                              flags=display="Odm";backup=0;wipeingui=1
-/odm_image           emmc     /dev/block/mapper/odm                              flags=backup=1;display="Odm Image";flashimg=1
 
 # Essential Partitions
 /metadata            ext4     /dev/block/by-name/metadata                        flags=backup=0;wrappedkey;display="Metadata"

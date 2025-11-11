@@ -108,8 +108,7 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     product \
     vendor \
     system \
-    system_ext \
-    odm
+    system_ext
 
 BOARD_ROOT_EXTRA_FOLDERS := \
     bluetooth \
@@ -117,6 +116,8 @@ BOARD_ROOT_EXTRA_FOLDERS := \
     firmware \
     persist \
     odm \
+    odm_dlkm \
+    vendor_dlkm \
     cust
 
 BOARD_SUPPRESS_SECURE_ERASE := true
