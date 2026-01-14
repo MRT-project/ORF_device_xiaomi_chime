@@ -25,6 +25,7 @@
 # Firmware Partitions
 /firmware            vfat     /dev/block/by-name/modem                           flags=display="Firmware"
 /cust                ext4     /dev/block/by-name/cust                            flags=display="Cust"
+/cust_image         emmc     /dev/block/by-name/cust                           flags=display="Cust";flashimg=1
 /misc                emmc     /dev/block/by-name/misc
 /vbmeta              emmc     /dev/block/by-name/vbmeta                          flags=display="VBMeta";backup=1;flashimg
 /vbmeta_system       emmc     /dev/block/by-name/vbmeta_system                   flags=display="VBMeta System";backup=1;flashimg
