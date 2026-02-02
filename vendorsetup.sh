@@ -70,7 +70,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export FOX_USE_XZ_UTILS=1
     export FOX_USE_NANO_EDITOR=1
     # Backup and OTA
-    export OF_QUICK_BACKUP_LIST="/boot;/dtbo;/data;/system_image;/vendor_image;/product_image;"
+    export OF_QUICK_BACKUP_LIST="/boot;/dtbo;/vbmeta;/vbmeta_system;/system_image;/system_ext_image;/vendor_image;/product_image;"
     export OF_KEEP_DM_VERITY=1
     export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
     export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
