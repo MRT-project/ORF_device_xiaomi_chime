@@ -3,7 +3,9 @@
 
 load_citrus()
 {
-    resetprop "ro.product.model" "POCO M3"
+    resetprop "ro.product.marketname" "POCO M3"
+    resetprop "ro.product.model" "M2010J19CG"
+    resetprop "ro.product.product.brand" "POCO"
     resetprop "ro.product.name" "citrus"
     resetprop "ro.build.product" "citrus"
     resetprop "ro.product.device" "citrus"
@@ -12,7 +14,9 @@ load_citrus()
 
 load_lime()
 {
-    resetprop "ro.product.model" "Redmi Note 9 4G"
+    resetprop "ro.product.marketname" "Redmi 9T"
+    resetprop "ro.product.model" "M2010J19SG"
+    resetprop "ro.product.product.brand" "Redmi"
     resetprop "ro.product.name" "lime"
     resetprop "ro.build.product" "lime"
     resetprop "ro.product.device" "lime"
@@ -21,7 +25,9 @@ load_lime()
 
 load_lemon()
 {
-    resetprop "ro.product.model" "Redmi 9T NFC"
+    resetprop "ro.product.marketname" "Redmi 9T NFC"
+    resetprop "ro.product.model" "M2010J19SY"
+    resetprop "ro.product.product.brand" "Redmi"
     resetprop "ro.product.name" "lemon"
     resetprop "ro.build.product" "lemon"
     resetprop "ro.product.device" "lemon"
@@ -30,7 +36,9 @@ load_lemon()
 
 load_pomelo()
 {
-    resetprop "ro.product.model" "Redmi 9T Brazil"
+    resetprop "ro.product.marketname" "Redmi Note 9 4G"
+    resetprop "ro.product.model" "M2010J19SL"
+    resetprop "ro.product.product.brand" "Redmi"
     resetprop "ro.product.name" "pomelo"
     resetprop "ro.build.product" "pomelo"
     resetprop "ro.product.device" "pomelo"
