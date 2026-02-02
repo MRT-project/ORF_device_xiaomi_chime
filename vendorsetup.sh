@@ -62,6 +62,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
     export OF_FBE_METADATA_MOUNT_IGNORE=1
     export FOX_ENABLE_APP_MANAGER=1
+    export OF_ENABLE_FRP_ADDON=1
     # Shell and utilities
     export FOX_USE_BASH_SHELL=1
     export FOX_ASH_IS_BASH=1
