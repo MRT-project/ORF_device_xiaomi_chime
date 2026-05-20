@@ -43,9 +43,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export ALLOW_MISSING_DEPENDENCIES=true
     # maintainer
     export OF_MAINTAINER="AnGgIt86 M•R•T"
-    # Version of orangefox recovery automatic
-    export FOX_INTERNAL_RELEASE="12.1"
-    # export FOX_MAINTAINER_PATCH_VERSION=3
     # Partition settings
     export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
     export FOX_RECOVERY_SYSTEMEXT_PARTITION="/dev/block/mapper/system_ext"
