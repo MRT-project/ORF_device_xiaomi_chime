@@ -49,52 +49,54 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export FOX_RECOVERY_PRODUCT_PARTITION="/dev/block/mapper/product"
     export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
     # OrangeFox features
-    export OF_USE_GREEN_LED=0
-    export OF_HIDE_NOTCH=1
-    export OF_USE_MAGISKBOOT=1
-    export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
-    export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
-    export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
-    export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
-    export OF_NO_MIUI_PATCH_WARNING=1
-    export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
-    export OF_FBE_METADATA_MOUNT_IGNORE=1
-    export FOX_ENABLE_APP_MANAGER=1
-    export OF_ENABLE_FRP_ADDON=1
+    export OF_USE_GREEN_LED="0"
+    export OF_USE_MAGISKBOOT="1"
+    export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES="1"
+    export OF_DONT_PATCH_ENCRYPTED_DEVICE="1"
+    export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER="1"
+    export OF_NO_TREBLE_COMPATIBILITY_CHECK="1"
+    export OF_NO_MIUI_PATCH_WARNING="1"
+    export OF_IGNORE_LOGICAL_MOUNT_ERRORS="1"
+    export OF_FBE_METADATA_MOUNT_IGNORE="1"
+    export FOX_ENABLE_APP_MANAGER="1"
+    export OF_ENABLE_FRP_ADDON="1"
+    export FOX_USE_BUSYBOX_BINARY="1"
+	export OF_DEFAULT_KEYMASTER_VERSION="4.1"
+	export OF_ADVANCED_SECURITY="1"
     # Shell and utilities
-    export FOX_USE_BASH_SHELL=1
-    export FOX_ASH_IS_BASH=1
-    export FOX_USE_TAR_BINARY=1
-    export FOX_USE_SED_BINARY=1
-    export FOX_USE_XZ_UTILS=1
-    export FOX_USE_NANO_EDITOR=1
+    export FOX_USE_BASH_SHELL="1"
+    export FOX_ASH_IS_BASH="1"
+    export FOX_USE_TAR_BINARY="1"
+    export FOX_USE_SED_BINARY="1"
+    export FOX_USE_XZ_UTILS="1"
+    export FOX_USE_NANO_EDITOR="1"
     # Backup and OTA
     export OF_QUICK_BACKUP_LIST="/boot;/dtbo;/vbmeta;/vbmeta_system;/system_image;/system_ext_image;/vendor_image;/product_image;"
-    export OF_KEEP_DM_VERITY=1
-    export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
-    export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
-    export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
-    export FOX_DELETE_AROMAFM=1
-    export FOX_BUGGED_AOSP_ARB_WORKAROUND=1546300800
+    export OF_KEEP_DM_VERITY="1"
+    export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES="1"
+    export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR="1"
+    export OF_DISABLE_MIUI_OTA_BY_DEFAULT="1"
+    export FOX_DELETE_AROMAFM="1"
+    export FOX_BUGGED_AOSP_ARB_WORKAROUND="1546300800"
     # try to prevent potential data format errors
-    export OF_UNBIND_SDCARD_F2FS=1
+    export OF_UNBIND_SDCARD_F2FS="1"
     # screen settings
-    export OF_SCREEN_H=2340
-    export OF_STATUS_H=80
-    export OF_STATUS_INDENT_LEFT=55
-    export OF_STATUS_INDENT_RIGHT=55
-    export OF_HIDE_NOTCH=1
-    export OF_CLOCK_POS=1
+    export OF_SCREEN_H="2340"
+    export OF_STATUS_H="80"
+    export OF_STATUS_INDENT_LEFT="55"
+    export OF_STATUS_INDENT_RIGHT="55"
+    export OF_HIDE_NOTCH="1"
+    export OF_CLOCK_POS="1"
     # f2fs compression
-    export OF_ENABLE_FS_COMPRESSION=1
+    export OF_ENABLE_FS_COMPRESSION="1"
     # avoid decryption problems on some devices and ROMs
-    export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
+    export OF_FIX_DECRYPTION_ON_DATA_MEDIA="1"
     # patch avb20 - some ROM recoveries try to overwrite custom recoveries
-    export OF_PATCH_AVB20=1
+    export OF_PATCH_AVB20="1"
     # support disabling avb2.0 by patching vbmeta/vbmeta_system
-    export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
+    export OF_SUPPORT_VBMETA_AVB2_PATCHING="1"
     # disable automatic rebooting after openrecoveryscript finishes
-    export OF_DISABLE_ORS_AUTO_REBOOT=1
+    export OF_DISABLE_ORS_AUTO_REBOOT="1"
 
     # Set Dark as default theme
 	cp -v bootable/recovery/gui/theme/portrait_hdpi/themes/styles/Dark.xml bootable/recovery/gui/theme/portrait_hdpi/themes/style.xml
