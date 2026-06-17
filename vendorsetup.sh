@@ -95,7 +95,21 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export OF_SUPPORT_VBMETA_AVB2_PATCHING=1
     # disable automatic rebooting after openrecoveryscript finishes
     export OF_DISABLE_ORS_AUTO_REBOOT=1
-    
+
+    # Set Dark as default theme
+	cp -v bootable/recovery/gui/theme/portrait_hdpi/themes/styles/Dark.xml bootable/recovery/gui/theme/portrait_hdpi/themes/style.xml
+
+	# Enable navbar (old style navigation)
+	echo '<?xml version="1.0"?>
+        <recovery>
+        <variables>
+                <variable name="navbar_disable" value="0"/>
+                <variable name="navbar_disable_add" value="0"/>
+                <variable name="screen_h" value="2340"/>
+                <variable name="real_gestures_enable" value="0"/>
+        </variables>
+        </recovery>' >bootable/recovery/gui/theme/portrait_hdpi/themes/navbar.xml
+
     # Log build variables
     if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
         export | grep "FOX" >> $FOX_BUILD_LOG_FILE
