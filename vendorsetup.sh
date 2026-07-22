@@ -48,6 +48,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export FOX_RECOVERY_SYSTEMEXT_PARTITION="/dev/block/mapper/system_ext"
     export FOX_RECOVERY_PRODUCT_PARTITION="/dev/block/mapper/product"
     export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+    export FOX_RECOVERY_ODM_PARTITION="/dev/block/mapper/odm"
     # OrangeFox features
     export OF_USE_GREEN_LED="0"
     export OF_USE_MAGISKBOOT="1"

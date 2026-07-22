@@ -108,7 +108,8 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     product \
     vendor \
     system \
-    system_ext
+    system_ext \
+    odm
 
 BOARD_ROOT_EXTRA_FOLDERS := \
     bluetooth \

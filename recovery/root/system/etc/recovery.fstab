@@ -49,6 +49,9 @@ product                                                 /product       erofs   r
 vendor                                                  /vendor        ext4    ro,barrier=1,discard                                                              wait,avb,logical,first_stage_mount
 vendor                                                  /vendor        erofs   ro                                                                                wait,avb,logical,first_stage_mount
 
+odm                                                     /odm           ext4    ro,barrier=1,discard                                                              wait,avb,logical,first_stage_mount
+odm                                                     /odm           erofs   ro                                                                                wait,avb,logical,first_stage_mount
+
 # Cache partition
 /dev/block/bootdevice/by-name/cache                                /cache         ext4    nosuid,noatime,nodev,barrier=1                                                    wait
 /dev/block/bootdevice/by-name/cache                                /cache         f2fs    nosuid,nodev,noatime,barrier=1,inline_xattr,flush_merge,data_flush                wait
