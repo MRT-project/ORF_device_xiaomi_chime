@@ -1,69 +1,57 @@
 #!/system/bin/sh
 # This script is needed to automatically set device props.
 
-load_citrus()
-{
-    resetprop "ro.product.marketname" "POCO M3"
-    resetprop "ro.product.model" "M2010J19CG"
-    resetprop "ro.product.product.brand" "POCO"
-    resetprop "ro.product.name" "citrus"
-    resetprop "ro.build.product" "citrus"
-    resetprop "ro.product.device" "citrus"
-    resetprop "ro.vendor.product.device" "citrus"
+LOG_TAG="variant-script"
+log() { echo "$LOG_TAG: $*" 1>&2; }
+
+set_prop() {
+    key="$1"
+    val="$2"
+    if setprop "$key" "$val" 2>/dev/null; then
+        return 0
+    fi
+    if command -v resetprop >/dev/null 2>&1; then
+        if resetprop "$key" "$val" 2>/dev/null; then
+            return 0
+        fi
+    fi
+    log "WARN: gagal set $key=$val"
+    return 1
 }
 
-load_lime()
-{
-    resetprop "ro.product.marketname" "Redmi 9T"
-    resetprop "ro.product.model" "M2010J19SG"
-    resetprop "ro.product.product.brand" "Redmi"
-    resetprop "ro.product.name" "lime"
-    resetprop "ro.build.product" "lime"
-    resetprop "ro.product.device" "lime"
-    resetprop "ro.vendor.product.device" "lime"
+load_variant() {
+    set_prop ro.product.marketname       "$1"
+    set_prop ro.product.model            "$2"
+    set_prop ro.product.product.brand    "$3"
+    set_prop ro.product.name             "$4"
+    set_prop ro.build.product            "$4"
+    set_prop ro.product.device           "$4"
+    set_prop ro.product.board            "$4"
+    set_prop ro.vendor.product.device    "$4"
 }
 
-load_lemon()
-{
-    resetprop "ro.product.marketname" "Redmi 9T NFC"
-    resetprop "ro.product.model" "M2010J19SY"
-    resetprop "ro.product.product.brand" "Redmi"
-    resetprop "ro.product.name" "lemon"
-    resetprop "ro.build.product" "lemon"
-    resetprop "ro.product.device" "lemon"
-    resetprop "ro.vendor.product.device" "lemon"
-}
+variant="$(getprop ro.boot.product.hardware.sku)"
 
-load_pomelo()
-{
-    resetprop "ro.product.marketname" "Redmi Note 9 4G"
-    resetprop "ro.product.model" "M2010J19SL"
-    resetprop "ro.product.product.brand" "Redmi"
-    resetprop "ro.product.name" "pomelo"
-    resetprop "ro.build.product" "pomelo"
-    resetprop "ro.product.device" "pomelo"
-    resetprop "ro.vendor.product.device" "pomelo"
-}
+if [ -z "$variant" ]; then
+    variant="citrus"
+fi
 
-variant=$(getprop ro.boot.product.hardware.sku)
-echo $variant
-
-case $variant in
-    "citrus")
-        load_citrus
+case "$variant" in
+    citrus)
+        load_variant "POCO M3" "M2010J19CG" "POCO" "citrus"
         ;;
-    "lime")
-        load_lime
+    lime)
+        load_variant "Redmi 9T" "M2010J19SG" "Redmi" "lime"
         ;;
-    "lemon")
-        load_lemon
+    lemon)
+        load_variant "Redmi 9T NFC" "M2010J19SY" "Redmi" "lemon"
         ;;
-    "pomelo")
-	load_pomelo
-	;;
+    pomelo)
+        load_variant "Redmi Note 9 4G" "M2010J19SL" "Redmi" "pomelo"
+        ;;
     *)
-	load_citrus
-	;;
+        load_variant "POCO M3" "M2010J19CG" "POCO" "citrus"
+        ;;
 esac
 
 exit 0
