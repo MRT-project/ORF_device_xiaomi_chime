@@ -42,6 +42,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export TARGET_DEVICE_ALT="citrus, lime, lemon, pomelo, juice, chime"
     export ALLOW_MISSING_DEPENDENCIES=true
     # maintainer
+    export FOX_MAINTAINER_PATCH_VERSION="16"
     export OF_MAINTAINER="AnGgIt86 M•R•T"
     # Partition settings
     export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
